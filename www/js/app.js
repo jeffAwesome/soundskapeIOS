@@ -102,7 +102,7 @@ angular.module('musicapp', ['ionic', 'angularMoment', 'angularSoundManager', 'mu
     .state('login', { // Notice: this state name matches the loginState property value to set in authProvider.init({...}) below...
       url: '/login',
       templateUrl: 'templates/login.tpl.html',
-      controller: 'LoginCtrl',
+      controller: 'LoginCtrl'
     })
     // Your app states
     .state('userInfo', {
