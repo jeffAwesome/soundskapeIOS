@@ -25,8 +25,11 @@ angular.module('musicapp.controllers', [])
     })
 
   .controller('ArtistListCtrl', function($scope, $rootScope, $filter, MusicFac) {
-
-
+      MusicFac.getArtists().then(function(data) {
+        $scope.bands = data
+        console.log("the band data is: ");
+        console.log(data);
+      });
   })
 
 .controller('MusicListCtrl', function($scope, $rootScope, $filter, MusicFac) {

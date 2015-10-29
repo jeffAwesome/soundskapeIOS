@@ -1,8 +1,13 @@
 <ion-view view-title="Artists">
   <ion-content overflow-scroll="true">
     <div class="list">
-
+      
      <h2>The artists</h2>
+
+      <div ng-repeat="band in bands">
+          {{band.name}}<br />
+          location: {{ band.location }}
+      </div>
 
     </div>
   </ion-content>

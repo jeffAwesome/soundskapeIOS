@@ -25,6 +25,13 @@ angular.module('musicapp.services', [])
         .then(function (response){
           return (response.data)
         });
+    },
+    getArtists: function() {
+      return $http.get('http://localhost:3000/bands.json')
+        .then(function (response){
+          return (response.data)
+        });
     }
   }
+
 });
