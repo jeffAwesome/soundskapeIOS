@@ -9,7 +9,7 @@ angular.module('musicapp.services', [])
         });
     },
     topAlbums: function(){
-      return $http.get('https://itunes.apple.com/us/rss/topalbums/limit=15/explicit=true/json')
+      return $http.get('http://localhost:3000/albums.json')
         .then(function (response){
           return (response.data)
         });

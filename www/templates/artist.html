@@ -1,15 +1,19 @@
 <ion-view view-title="Artists">
   <ion-content overflow-scroll="true">
     <div class="list">
-      
-     <h2>The artists</h2>
 
       <div ng-repeat="band in bands">
-          {{band.name}}<br />
-          location: {{ band.location }}
+        <a href="#" class="item item-avatar img-square">
+          <img ng-src="http://localhost:3000/{{band.profile_pic}}" alt="{{band.name}}" style="height: 50px; width: 50px;" />
+          <h2>{{band.name}}</h2>
+          <h4>{{ band.location }}</h4>
+          </a>
       </div>
 
     </div>
+
+
+
   </ion-content>
 
 </ion-view>
