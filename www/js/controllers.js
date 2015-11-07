@@ -26,9 +26,7 @@ angular.module('musicapp.controllers', [])
 
   .controller('ArtistListCtrl', function($scope, $rootScope, $filter, MusicFac) {
       MusicFac.getArtists().then(function(data) {
-        $scope.bands = data
-        console.log("the band data is: ");
-        console.log(data);
+        $scope.bands = data;
       });
   })
 
@@ -36,7 +34,7 @@ angular.module('musicapp.controllers', [])
 
   MusicFac.topSongs().then(function(data){
     $scope.filtered = $filter('orderBy')(data.feed.entry, 'title.label');
-  })
+  });
 
   $scope.setAudio = function(i, trackId){
     $rootScope.musicPlayer.playlist = $scope.filtered;
