@@ -16,9 +16,19 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       '../www/lib/ionic/js/ionic.bundle.js',
-      '../www/lib/**/*.js',
-      '../www/app/**/*.js',
-      '../www/js/*.js',
+      '../www/lib/auth0-lock/build/auth0-lock.js',
+      '../www/lib/auth0-angular/build/auth0-angular.js',
+      '../www/lib/a0-angular-storage/dist/angular-storage.js',
+      '../www/lib/angular-jwt/dist/angular-jwt.js',
+      '../www/lib/moment/moment.js',
+      '../www/lib/angular-moment/angular-moment.js',
+      '../www/lib/angular-soundmanager2/dist/angular-soundmanager2.js',
+      '../www/lib/collide.js',
+      '../www/js/app.js',
+      '../www/js/controllers.js',
+      '../www/js/services.js',
+      '../www/lib/angular-mocks/angular-mocks.js',
+
       'unit-tests/**/*.js'
     ],
 
