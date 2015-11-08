@@ -156,6 +156,27 @@ angular.module('musicapp', ['ionic', 'angularMoment', 'angularSoundManager', 'mu
       }
     })
 
+
+    .state('tab.artist-detail', {
+      url: '/artist/:artistId',
+      views: {
+        'tab-artist': {
+          templateUrl: 'templates/artist-detail.html',
+          controller: 'ArtistDetailCtrl'
+        }
+      }
+    })
+
+    .state('tab.album-detail', {
+      url: '/album/:albumId',
+      views: {
+        'tab-artist': {
+          templateUrl: 'templates/album-detail.html',
+          controller: 'AlbumDetailCtrl'
+        }
+      }
+    })
+
   .state('tab.new', {
       url: '/new',
       views: {

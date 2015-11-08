@@ -1,0 +1,30 @@
+<ion-view>
+  <ion-nav-title>{{artist.name}}</ion-nav-title>
+  <ion-content overflow-scroll="true" class="music-detail img-square" ng-class="hasFooter()">
+    <div class="padding">
+      <figure class="square" style="background-image:url('http://localhost:3000/{{ artist.profile_pic.replace('100x100', '600x600') }}')"></figure>
+    </div>
+    <div class="padding">
+      <h4>Discography</h4>
+    </div>
+
+    <ul class="list track-list">
+      <li ng-repeat="album in albums" class="item" ng-if="album.title">
+        <a href="#/tab/album/{{album.id}}" class="item item-avatar img-square">
+          <img ng-src="http://localhost:3000/{{album.cover_art}}" alt="{{album.title}}" style="height: 50px; width: 50px;" />
+          <h2>{{album.title}}</h2>
+          <h4>{{ album.release_date }}</h4>
+        </a>
+      </li>
+    </ul>
+  </ion-content>
+
+  <div class="music-footer" ng-if="musicPlaying" ng-click="openModal()">
+
+    <span class="track">{{currentTrackDetails.trackName}}</span>
+    <span class="artist">{{currentTrackDetails.artistName}}</span>
+
+  </div>
+
+</ion-view>
+

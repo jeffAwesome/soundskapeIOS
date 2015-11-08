@@ -30,6 +30,17 @@ angular.module('musicapp.controllers', [])
       });
   })
 
+  .controller('ArtistDetailCtrl', function($scope, $rootScope, MusicFac, $state, $stateParams) {
+    MusicFac.getArtist($stateParams.artistId).then(function(data) {
+      $scope.artist = data;
+
+      // after the artist details load, load the albums
+      MusicFac.getArtistAlbums($stateParams.artistId).then(function(data) {
+        $scope.albums = data;
+      });
+    });
+  })
+
 .controller('MusicListCtrl', function($scope, $rootScope, $filter, MusicFac) {
 
   MusicFac.topSongs().then(function(data){
@@ -173,7 +184,13 @@ angular.module('musicapp.controllers', [])
 .controller('AlbumDetailCtrl', function($scope, $rootScope, $stateParams, $state, $filter, MusicFac){
   var albumId = $stateParams.albumId;
 
-  MusicFac.lookup(albumId).then(function(data){
+    MusicFac.lookupAlbum(albumId).then(function(data) {
+      $scope.album = data;
+      $scope.artist = data.band;
+      $scope.tracks = data.tracks;
+    })
+
+  /*MusicFac.lookup(albumId).then(function(data){
     $scope.album = data.results[0];
   })
 
@@ -193,7 +210,7 @@ angular.module('musicapp.controllers', [])
 
       $rootScope.createModal(i, id);
     }
-  }
+  } */
 
 })
 

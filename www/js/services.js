@@ -8,8 +8,14 @@ angular.module('musicapp.services', [])
           return (response.data)
         });
     },
-    topAlbums: function(){
+   /*topAlbums: function(){
       return $http.get('http://localhost:3000/albums.json')
+        .then(function (response){
+          return (response.data)
+        });
+    },*/
+    topAlbums: function(){
+      return $http.get('https://itunes.apple.com/us/rss/topalbums/limit=15/explicit=true/json')
         .then(function (response){
           return (response.data)
         });
@@ -31,6 +37,24 @@ angular.module('musicapp.services', [])
         .then(function (response){
           return (response.data)
         });
+    },
+    getArtist: function(id) {
+      return $http.get('http://localhost:3000/bands/'+id+'.json')
+        .then(function(response) {
+          return (response.data);
+        })
+    },
+    getArtistAlbums: function(id) {
+      return $http.get('http://localhost:3000/bands/'+id+'/albums.json')
+        .then(function(response) {
+          return (response.data);
+        })
+    },
+    lookupAlbum: function(id) {
+      return $http.get('http://localhost:3000/albums/'+id+'.json')
+        .then(function(response) {
+          return (response.data);
+        })
     }
   }
 

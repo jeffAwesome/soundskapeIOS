@@ -3,7 +3,7 @@
     <div class="list">
 
       <div ng-repeat="band in bands">
-        <a href="#" class="item item-avatar img-square">
+        <a href="#/tab/artist/{{band.id}}" class="item item-avatar img-square">
           <img ng-src="http://localhost:3000/{{band.profile_pic}}" alt="{{band.name}}" style="height: 50px; width: 50px;" />
           <h2>{{band.name}}</h2>
           <h4>{{ band.location }}</h4>
@@ -12,7 +12,12 @@
 
     </div>
 
+    <div class="music-footer" ng-if="musicPlaying" ng-click="openModal()">
 
+      <span class="track">{{currentTrackDetails.trackName}}</span>
+      <span class="artist">{{currentTrackDetails.artistName}}</span>
+
+    </div>
 
   </ion-content>
 
