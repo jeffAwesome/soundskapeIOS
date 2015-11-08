@@ -10,15 +10,15 @@
 	</div>
 
     <ul class="list track-list">
-	    <li ng-repeat="track in tracks | orderBy: 'album_track_number'" class="item" ng-if="track.title" ng-click="lookup(track.id, track.previewUrl, $index)">
-	    	<span ng-if="track.previewUrl" class="active">
+	    <li ng-repeat="track in tracks | orderBy: 'album_track_number'" class="item" ng-if="track.title" ng-click="lookupSongs(track.id, track.music_url, $index)">
+	    	<span ng-if="track.music_url" class="active">
 		    	<span class="track-number">{{track.album_track_number}}</span>
 		    	{{track.title}}
 		    	<span class="item-note">
 			      {{track.trackTimeMillis | amDateFormat:'m:ss'}}
 			    </span>
 		    </span>
-		    <span ng-if="!track.previewUrl">
+		    <span ng-if="!track.music_url">
 		    	<span class="track-number">{{track.album_track_number}}</span>
 		    	{{track.title}}
 		    	<span class="item-note">
@@ -31,8 +31,8 @@
 
   <div class="music-footer" ng-if="musicPlaying" ng-click="openModal()">
 
-    <span class="track">{{currentTrackDetails.trackName}}</span>
-    <span class="artist">{{currentTrackDetails.artistName}}</span>
+    <span class="track">{{currentTrackDetails.title}}</span>
+    <span class="artist">{{currentTrackDetails.band_name}}</span>
 
   </div>
 

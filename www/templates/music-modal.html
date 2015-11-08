@@ -13,21 +13,21 @@
 
 	  <ion-slide-box ng-if="!musicPlayer.album && musicPlayer.playlist" on-slide-changed="slideHasChanged($index)" show-pager="false" does-continue="true" active-slide="activeSlide">
 		  <ion-slide ng-repeat="track in musicPlayer.playlist" class="padding">
-		    <figure class="square" style="background-image:url('{{ (track['im:image'][2].label).replace('170x170', '600x600') }}')"></figure>
+		    <figure class="square" style="background-image:url('http://localhost:3000/{{ track.album_cover_art.replace('170x170', '600x600') }}')"></figure>
 		  </ion-slide>
 	  </ion-slide-box>
 
 	  <ion-slide-box ng-if="musicPlayer.album && musicPlayer.playlist" on-slide-changed="slideHasChanged($index)" show-pager="false" does-continue="true" active-slide="activeSlide">
 		  <ion-slide ng-repeat="track in musicPlayer.playlist" class="padding">
-		    <figure class="square" style="background-image:url('{{ track.artworkUrl100.replace('100x100', '600x600') }}')"></figure>
+		    <figure class="square" style="background-image:url('http://localhost:3000/{{ track.album_cover_art.replace('100x100', '600x600') }}')"></figure>
 		  </ion-slide>
 	  </ion-slide-box>
 
 	  <!-- <figure class="square" style="background-image:url('{{ track.artworkUrl100.replace('100x100', '600x600') }}')"></figure> -->
 
 	<div class="padding">
-	  <h4 ng-if="track.trackName" class="ellipsed">{{track.trackName}}</h4>
-	  <p ng-if="track.artistName" class="ellipsed">{{track.artistName}}</p>
+	  <h4 ng-if="track.title" class="ellipsed">{{track.title}}</h4>
+	  <p ng-if="track.band_name" class="ellipsed">{{track.band_name}}</p>
     </div>
 
     <div class="music-controls">

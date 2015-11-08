@@ -61,16 +61,19 @@ angular.module('musicapp.controllers', [])
   var trackId = $rootScope.musicPlayer.trackId;
 
   $scope.playTrack = function(track){
+    debugger;
+    console.log("somewhere the play track was called");
+    console.log(track);
 
-      if($rootScope.currentTrack != track.trackId){
+      if($rootScope.currentTrack != track.id){
         //Create New Sound
         $rootScope.musicPlayer.trackPosition = 0;
         $rootScope.musicPlayer.trackRange = 0;
         soundManager.destroySound($rootScope.currentTrack);
 
         $rootScope.mySound = soundManager.createSound({
-            id: track.trackId.toString(),
-            url: track.previewUrl,
+            id: track.id.toString(),
+            url: 'http://localhost:3000/'+track.music_url,
             autoLoad: true,
             autoPlay: true,
             stream: true,
@@ -123,11 +126,13 @@ angular.module('musicapp.controllers', [])
         $rootScope.musicPlayer.title = $rootScope.musicPlayer.playlist[i].title.label;
       }else{
         var trackId = $rootScope.musicPlayer.playlist[i].trackId;
-        $rootScope.musicPlayer.title = $rootScope.musicPlayer.playlist[i].trackName;
+        $rootScope.musicPlayer.title = $rootScope.musicPlayer.playlist[i].title;
       }
 
+      console.log("were hitting the trackID for music Fac");
+      console.log(trackId);
       MusicFac.lookup(trackId).then(function(data){
-        $scope.track = data.results[0];
+        $scope.track = data;
         $scope.playTrack($scope.track);
       })
     }
@@ -169,9 +174,12 @@ angular.module('musicapp.controllers', [])
     }
 
     $scope.getTrackDetails = function(){
+      console.log("are we in the get track details");
       $rootScope.activeSlide = $rootScope.musicPlayer.index;
-      MusicFac.lookup(trackId).then(function(data){
-        $scope.track = data.results[0];
+      console.log(trackId);
+      MusicFac.lookupSongs(trackId).then(function(data){
+        console.log(data);
+        $scope.track = data;
         $scope.playTrack($scope.track)
       })
     }
@@ -188,7 +196,7 @@ angular.module('musicapp.controllers', [])
       $scope.album = data;
       $scope.artist = data.band;
       $scope.tracks = data.tracks;
-    })
+    });
 
   /*MusicFac.lookup(albumId).then(function(data){
     $scope.album = data.results[0];
@@ -199,10 +207,11 @@ angular.module('musicapp.controllers', [])
 
     //Remove first track from iTunes result that is not a song.
     $scope.tracks.shift();
-  })
+  }) */
 
-  $scope.lookup = function(id, url, i){
+  $scope.lookupSongs = function(id, url, i){
     if(url){
+      debugger;
       //$state.go('tab.new-detail', {trackId: id});
       $rootScope.musicPlayer.playlist = $scope.tracks;
       $rootScope.musicPlayer.index = i;
@@ -210,7 +219,7 @@ angular.module('musicapp.controllers', [])
 
       $rootScope.createModal(i, id);
     }
-  } */
+  }
 
 })
 

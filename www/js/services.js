@@ -27,7 +27,7 @@ angular.module('musicapp.services', [])
         });
     },
     lookupSongs: function(id) {
-      return $http.jsonp('https://itunes.apple.com/us/lookup?id='+id+'&entity=song&callback=JSON_CALLBACK')
+      return $http.get('http://localhost:3000/tracks/'+id+'.json')
         .then(function (response){
           return (response.data)
         });
